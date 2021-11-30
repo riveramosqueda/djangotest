@@ -6,3 +6,7 @@ First steps for a django web application
 - pip install django
 - pip install virtualenv
 
+
+
+CLI
+- django-admin startproject djangotest .

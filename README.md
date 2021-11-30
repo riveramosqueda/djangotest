@@ -9,4 +9,12 @@ First steps for a django web application
 
 
 CLI
+#CREATING NEW PROJECT
 - django-admin startproject djangotest .
+
+#MIRATING DJANGO DEFAULT MIGRATIONS
+- manage.py migrate
+
+#CREATE SUPERUSER
+- manage.py createsuperusero
+

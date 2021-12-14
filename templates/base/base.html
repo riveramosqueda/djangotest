@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} Test DJANGO {% endblock %}</title>
+
+  {% block header_js %}{% endblock %}
+  {% block header_css %}{% endblock %}
+</head>
+<body>
+  {% block header %}
+    <h2>block header</h2>
+  {% endblock %}
+
+  {% block app_content %}
+    <h2>app content</h2>
+  {% endblock %}
+
+  {% block footer %}
+    <h2>block footer</h2>
+  {% endblock %}
+
+  {% block footer_js %}{% endblock %}
+</body>
+</html>

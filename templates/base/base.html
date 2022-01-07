@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,21 +7,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %} Test DJANGO {% endblock %}</title>
 
-  {% block header_js %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'css/bootswatch.min.css' %}">
   {% block header_css %}{% endblock %}
+
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+  {% block header_js %}{% endblock %}
 </head>
 <body>
-  {% block header %}
-    <h2>block header</h2>
-  {% endblock %}
+  {% include 'base/navbar.html' %}
 
-  {% block app_content %}
-    <h2>app content</h2>
-  {% endblock %}
+  <div class="page-header p-5">
+    <h1>{% block header %}{% endblock %}</h1>
+  </div>
 
-  {% block footer %}
-    <h2>block footer</h2>
-  {% endblock %}
+  <div class="p-4">
+    {% block app_content %}{% endblock %}
+  </div>
+
+  {% include 'base/footer.html' %}
 
   {% block footer_js %}{% endblock %}
 </body>

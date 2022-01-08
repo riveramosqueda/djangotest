@@ -3,6 +3,9 @@ from apps.adopcion.models import Persona
 
 class Vacuna(models.Model):
   nombre=models.CharField(max_length=50)
+  
+  def __str__(self):
+    return '{}'.format(self.nombre)
 
 # Create your models here.
 class Mascota(models.Model):
@@ -13,3 +16,6 @@ class Mascota(models.Model):
   # relations
   persona=models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE)
   vacuna=models.ManyToManyField(Vacuna, blank=True)
+
+  def __str__(self):
+    return '{}'.format(self.nombre)

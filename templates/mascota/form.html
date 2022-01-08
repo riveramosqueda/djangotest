@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+  {% block title %} Formulario Mascota {% endblock %}
+
+  {% block header %}Formulario Mascota{% endblock %}
+
+  {% block app_content %}
+    <div class="container">
+      <form method="POST">
+        {%  csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-info">Guardar</button>
+      </form>
+    </div>
+  {% endblock %}

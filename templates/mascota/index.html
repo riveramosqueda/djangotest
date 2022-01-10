@@ -5,5 +5,34 @@
   {% block header %}Header Mascota{% endblock %}
 
   {% block app_content %}
-    <h2>app Mascota content</h2>
+  <div class="container table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <td></td>
+          <td>Nombre</td>
+          <td>Sexo</td>
+          <td>Edad</td>
+          <td>Fecha de Rescate</td>
+          <td>Adoptante</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% if mascotas %}
+          {% for mascota in mascotas %}
+            <tr>
+              <td>{{ mascota.id }}</td>
+              <td>{{ mascota.nombre }}</td>
+              <td>{{ mascota.sexo }}</td>
+              <td>{{ mascota.edad_aproximada }}</td>
+              <td>{{ mascota.fecha_rescate }}</td>
+              <td>{% if mascota.persona.nombre %} {{mascota.persona.nombre}} {% else %} --- {% endif %}</td>
+            </tr>
+          {% endfor %}
+        {% else %}
+            <h2>Sin registros</h2>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
   {% endblock %}

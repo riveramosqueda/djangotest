@@ -19,7 +19,7 @@ from django.conf.urls import url,include
 urlpatterns = [
     url('admin/', admin.site.urls),
     #Custom urls
-    url('adopcion', include('apps.adopcion.urls'), name="adopcion"),
-    url('mascota', include('apps.mascota.urls'), name="mascota"),
+    url('adopcion/', include('apps.adopcion.urls'), name="adopcion"),
+    url('mascota/', include('apps.mascota.urls'), name="mascota"),
     #-----------
 ]

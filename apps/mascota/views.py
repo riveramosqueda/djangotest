@@ -1,40 +1,27 @@
-from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.http import HttpResponse
+from django.views.generic import ListView,CreateView,UpdateView,DeleteView
+from django.shortcuts import render, redirect
 from apps.mascota.models import Mascota
 from apps.mascota.forms import MascotaForm
 
 # Create your views here.
-def index(request):
-  mascotas=Mascota.objects.all().order_by('-id')
-  contexto={'mascotas':mascotas}
+class MascotaList(ListView):
+  model=Mascota
+  template_name='mascota/index.html'
 
-  return render(request, 'mascota/index.html', contexto)
+class MascotaCreate(CreateView):
+  model=Mascota
+  form_class=MascotaForm
+  template_name='mascota/form.html'
+  success_url=reverse_lazy('mascota:index')
 
-def mascota_crear(request):
-  if request.method=='POST':
-    form=MascotaForm(request.POST)
-    if form.is_valid:
-      form.save()
-    return redirect('mascota:index')
-  else:
-    form=MascotaForm()
-  
-  return render(request, 'mascota/form.html', {'form':form})
+class MascotaUpdate(UpdateView):
+  model=Mascota
+  form_class=MascotaForm
+  template_name='mascota/form.html'
+  success_url=reverse_lazy('mascota:index')
 
-def mascota_editar(request, id):
-  mascota=Mascota.objects.get(id=id)
-  if request.method=='GET':
-    form=MascotaForm(instance=mascota)
-  else:
-    form=MascotaForm(request.POST,instance=mascota)
-    if form.is_valid():
-      form.save()
-    return redirect('mascota:index')
-
-  return render(request, 'mascota/form.html', {'form':form})
-
-def mascota_eliminar(request):
-  mascota=Mascota.objects.get(id=request.POST['delete_id'])
-  if request.method=='POST' and mascota:
-    mascota.delete()
-  return redirect('mascota:index')
+class MascotaDelete(DeleteView):
+  model=Mascota
+  success_url=reverse_lazy('mascota:index')

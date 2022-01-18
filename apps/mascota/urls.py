@@ -1,12 +1,12 @@
 from django.conf.urls import url,include
 from django.urls import path
-from apps.mascota.views import index,mascota_crear,mascota_editar,mascota_eliminar
+from apps.mascota.views import MascotaList,MascotaCreate,MascotaUpdate,MascotaDelete
 
 app_name = "mascota"
 
 urlpatterns = [
-    url(r'^$', index, name='index'),
-    url(r'crear', mascota_crear, name='crear'),
-    url(r'editar/(?P<id>\d+)$', mascota_editar, name='editar'),
-    url(r'eliminar$', mascota_eliminar, name='eliminar'),
+    url(r'^$', MascotaList.as_view(), name='index'),
+    url(r'crear', MascotaCreate.as_view(), name='crear'),
+    url(r'editar/(?P<pk>\d+)$', MascotaUpdate.as_view(), name='editar'),
+    url(r'eliminar/(?P<pk>\d+)$', MascotaDelete.as_view(), name='eliminar'),
 ]

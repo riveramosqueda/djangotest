@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <form action="{% url 'mascota:eliminar' %}" method="POST">
+        <form action="{% url 'mascota:eliminar' 0 %}" method="POST">
           {%  csrf_token %}
           <input type="hidden" name="delete_id" id="delete_id">
           <button type="submit" class="btn btn-danger">Eliminar</button>

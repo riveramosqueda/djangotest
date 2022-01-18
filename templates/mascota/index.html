@@ -6,6 +6,7 @@
   {% block header %}Header Mascota{% endblock %}
 
   {% block app_content %}
+  <a class="btn btn-sm btn-warning" href="{% url 'mascota:crear' %}">Registrar</a>
     <div class="container table-responsive">
       <table class="table">
         <thead>
@@ -20,8 +21,8 @@
           </tr>
         </thead>
         <tbody>
-          {% if mascotas %}
-            {% for mascota in mascotas %}
+          {% if object_list %}
+            {% for mascota in object_list %}
               <tr>
                 <td>{{ mascota.id }}</td>
                 <td>{{ mascota.nombre }}</td>
